@@ -15,6 +15,7 @@
 
 % docker-compose -f 2-docker-compose-app.yml up -d
 
+# verify deployment - should return empty list
 % curl -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:9090/api/contentwatched
 
 ## events arrived in sync
@@ -36,8 +37,7 @@
 # to retrieve all content watched records
 % curl -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:9090/api/contentwatched
 
-## to undeploy
-
+# to undeploy
 % docker-compose -f 2-docker-compose-app.yml down
 
 % docker-compose -f 1-docker-compose-db.yml down

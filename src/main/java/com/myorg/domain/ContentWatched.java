@@ -10,16 +10,6 @@ import javax.persistence.Table;
 @Table
 public class ContentWatched {
 
-    @Override
-    public String toString() {
-        return "ContentWatched{" +
-                "startTimestamp=" + startTimestamp +
-                ", userId='" + userId + '\'' +
-                ", contentId='" + contentId + '\'' +
-                ", timeWatched=" + timeWatched +
-                '}';
-    }
-
     @Column
     private long startTimestamp;
     @Id
@@ -38,22 +28,6 @@ public class ContentWatched {
         this.userId = userId;
         this.contentId = contentId;
         this.timeWatched = timeWatched;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ContentWatched)) return false;
-        ContentWatched that = (ContentWatched) o;
-        return getStartTimestamp() == that.getStartTimestamp() &&
-                getTimeWatched() == that.getTimeWatched() &&
-                Objects.equals(getUserId(), that.getUserId()) &&
-                Objects.equals(getContentId(), that.getContentId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getStartTimestamp(), getUserId(), getContentId(), getTimeWatched());
     }
 
     public long getStartTimestamp() {
@@ -86,5 +60,31 @@ public class ContentWatched {
 
     public void setTimeWatched(long timeWatched) {
         this.timeWatched = timeWatched;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ContentWatched)) return false;
+        ContentWatched that = (ContentWatched) o;
+        return getStartTimestamp() == that.getStartTimestamp() &&
+                getTimeWatched() == that.getTimeWatched() &&
+                Objects.equals(getUserId(), that.getUserId()) &&
+                Objects.equals(getContentId(), that.getContentId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStartTimestamp(), getUserId(), getContentId(), getTimeWatched());
+    }
+
+    @Override
+    public String toString() {
+        return "ContentWatched{" +
+                "startTimestamp=" + startTimestamp +
+                ", userId='" + userId + '\'' +
+                ", contentId='" + contentId + '\'' +
+                ", timeWatched=" + timeWatched +
+                '}';
     }
 }

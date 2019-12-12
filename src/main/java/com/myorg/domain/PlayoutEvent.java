@@ -10,20 +10,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PLAYOUT_EVENTS")
 public class PlayoutEvent {
+
     @Column
     private long eventTimestamp;
     @Id
     @Column
     private String sessionId;
-
-    @Override
-    public String toString() {
-        return "PlayoutEvent{" +
-                "eventTimestamp=" + eventTimestamp +
-                ", sessionId='" + sessionId + '\'' +
-                ", eventType=" + eventType +
-                '}';
-    }
 
     @Embedded
     private PlayoutEventType eventType;
@@ -35,21 +27,6 @@ public class PlayoutEvent {
         this.eventTimestamp = eventTimestamp;
         this.sessionId = sessionId;
         this.eventType = eventType;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PlayoutEvent)) return false;
-        PlayoutEvent that = (PlayoutEvent) o;
-        return getEventTimestamp() == that.getEventTimestamp() &&
-                Objects.equals(getSessionId(), that.getSessionId()) &&
-                Objects.equals(getEventType(), that.getEventType());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getEventTimestamp(), getSessionId(), getEventType());
     }
 
     public long getEventTimestamp() {
@@ -74,5 +51,29 @@ public class PlayoutEvent {
 
     public void setEventType(PlayoutEventType eventType) {
         this.eventType = eventType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PlayoutEvent)) return false;
+        PlayoutEvent that = (PlayoutEvent) o;
+        return getEventTimestamp() == that.getEventTimestamp() &&
+                Objects.equals(getSessionId(), that.getSessionId()) &&
+                Objects.equals(getEventType(), that.getEventType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEventTimestamp(), getSessionId(), getEventType());
+    }
+
+    @Override
+    public String toString() {
+        return "PlayoutEvent{" +
+                "eventTimestamp=" + eventTimestamp +
+                ", sessionId='" + sessionId + '\'' +
+                ", eventType=" + eventType +
+                '}';
     }
 }

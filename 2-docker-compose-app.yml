@@ -6,7 +6,7 @@ services:
     ports:
       - 9090:9090
     environment:
-      - MYSQL_HOST=mysql-svc
+      - MYSQL_HOST=mysql
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=eventsdb
