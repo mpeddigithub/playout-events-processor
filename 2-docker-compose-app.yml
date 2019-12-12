@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  playout-events-processor:
+    image: playout-events-processor:latest
+    ports:
+      - 9090:9090
+    environment:
+      - MYSQL_HOST=mysql-svc
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=eventsdb
+      - MYSQL_PORT=3306
